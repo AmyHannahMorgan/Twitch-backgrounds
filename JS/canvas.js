@@ -1,5 +1,6 @@
 class PulseHandler {
     constructor(startingX, startingY) {
+        console.log(startingX, startingY)
         this.startingX = startingX;
         this.startingY = startingY;
         this.pulses = [];
@@ -7,22 +8,35 @@ class PulseHandler {
         this.nextPulseTimer = setTimeout(() => {
             this.spawnPulse();
         }, 1000);
+        requestAnimationFrame(() => {
+            this.update();
+        });
     }
 
     spawnPulse(color) {
-        let color = color != undefined ? color : 'hsl(0, 0%, 25%)';
+        color = color != undefined ? color : 'white';
         this.pulses.push(new Pulse(this.startingX, this.startingY, this.nextPulseId, color, step, 20));
         this.nextPulseId++;
-        this.nextPulseTimer = setTimeout(() => {
-            this.spawnPulse();
-        }, 1000);
+        // this.nextPulseTimer = setTimeout(() => {
+        //     this.spawnPulse();
+        // }, 1000);
+    }
+
+    update() {
+        for(let i = 0; i < this.pulses.length; i++) {
+            this.pulses[i].update();
+        }
+
+        requestAnimationFrame(() => {
+            this.update();
+        });
     }
 }
 
 class Pulse {
     constructor(originX, originY, id, color, radialStep, verticiesCount) {
-        this.originX = originY;
-        this.originY = originX;
+        this.originX = originX;
+        this.originY = originY;
         this.id = id
         this.color = color;
         this.radiusStep = radialStep;
@@ -58,7 +72,7 @@ class Pulse {
         }
         ctx.lineWidth = 10;
         ctx.strokeStyle = this.color;
-        ctx.stroke;
+        ctx.stroke();
         this.radius += this.radiusStep;
     }
 }
