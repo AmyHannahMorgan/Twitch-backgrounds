@@ -11,8 +11,6 @@ class PulseHandler {
 
     spawnPulse(color) {
         let color = color != undefined ? color : 'hsl(0, 0%, 25%)';
-
-
     }
 }
 
@@ -21,12 +19,41 @@ class Pulse {
         this.originX = originY;
         this.originY = originX;
         this.color = color;
-        this.radialStep = radialStep;
+        this.radiusStep = radialStep;
+        this.radius = radialStep;
+        this.radianStep = 2 / verticiesCount * Math.PI;
         this.verticies = [];
 
         for(let i = 0; i < verticiesCount; i++) {
             this.verticies.push(new Verticy());
         }
+    }
+
+    update() {
+        ctx.beginPath
+        for(let i = 0; i < this.verticies.length; i++) {
+            if(this.verticies[i].update()) {
+                //change verticy nextPosition
+            }
+
+            if (i == this.verticies.length - 1) {
+                ctx.closePath();
+            }
+            else {
+                let x = this.originX;
+                let y = this.originY - this.radius + this.verticies[i].currentPosition;
+    
+                let x1 = ((x * Math.cos(this.radianStep * i)) + this.originX) - ((y * Math.sin(this.radianStep * i)) + this.originY);
+                let y1 = ((x * Math.sin(this.radianStep * i)) + this.originX) + ((y * Math.cos(this.radianStep * i)) + this.originY);
+    
+                if (i == 0) ctx.moveTo(x1, y1);
+                else ctx.lineTo(x1, y1);
+            }
+        }
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = this.color;
+        ctx.stroke;
+        this.radius += this.radiusStep;
     }
 }
 
