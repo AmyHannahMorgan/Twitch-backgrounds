@@ -1,5 +1,15 @@
+@keyframes rotate{
+    from {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
 body {
     margin: 0;
+    background-color: black
 }
 
 #radsymbol {
@@ -9,5 +19,10 @@ body {
     left: 0%;
 
     height: 50vw;
+    transform-origin: center 46%;
     transform: translateX(-50%) translateY(-50%);
+
+    animation: rotate 5s linear infinite;
+
+    filter: invert(0.25);
 }
