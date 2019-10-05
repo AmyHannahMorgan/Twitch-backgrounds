@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+#radsymbol {
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+
+    height: 50vw;
+    transform: translateX(-50%) translateY(-50%);
+}
