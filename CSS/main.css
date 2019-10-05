@@ -19,7 +19,6 @@ body {
     left: 0%;
 
     height: 50vw;
-    transform-origin: center 46%;
     transform: translateX(-50%) translateY(-50%);
 
     animation: rotate 5s linear infinite;
