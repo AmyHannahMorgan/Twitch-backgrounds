@@ -44,7 +44,12 @@ class PulseHandler {
         this.pulses.push(new Pulse(this.startingX, this.startingY, this, this.nextPulseId, color, step, 200));
         this.nextPulseId++;
         this.nextPulseTimer = setTimeout(() => {
-            this.spawnPulse();
+            if (randNumber(1, 7) == 6) {
+                this.spawnPulse('rgb(153,50,204)');
+            }
+            else {
+                this.spawnPulse();
+            }
         }, 3000);
     }
 
@@ -131,3 +136,7 @@ ctx.globalAlpha = 0.25;
 const step = 5;
 const handler = new PulseHandler(canvas.width/2, canvas.height/2);
 console.log(canvas);
+
+function randNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
