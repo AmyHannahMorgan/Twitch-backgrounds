@@ -40,7 +40,7 @@ class PulseHandler {
     }
 
     spawnPulse(color) {
-        color = color != undefined ? color : 'hsl(0, 0%, 50%)';
+        color = color != undefined ? color : 'hsl(0, 0%, 25%)';
         this.pulses.push(new Pulse(this.startingX, this.startingY, this, this.nextPulseId, color, step, 200));
         this.nextPulseId++;
         this.nextPulseTimer = setTimeout(() => {
