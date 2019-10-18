@@ -132,7 +132,7 @@ const canvas = document.querySelector('#background');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
-ctx.globalAlpha = 0.25;
+// ctx.globalAlpha = 0.75;
 const step = 5;
 const handler = new PulseHandler(canvas.width/2, canvas.height/2);
 console.log(canvas);
